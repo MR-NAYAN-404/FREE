@@ -119,8 +119,8 @@ def getname(uid):
         
         print(f"\033[1;32m{uid} | {name}")
         open(file,"a").write(uid+" | "+name+"\n")
-    else:
-        print(f"\033[1;34m{uid} | {name}")
+   # else:
+       # print(f"\033[1;34m{uid} | {name}")
     
     c+=1
     print(f'[Counting : %s ]'%(n),end="\r")
