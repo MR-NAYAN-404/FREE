@@ -176,6 +176,8 @@ def v1():
         print(' \033[1;97m[♥]  The process has been started')
         print(' [♥]  Wait for ids ')
         print(50*'_')
+        
+        
         for guru in user:
             uid = kode+kodex+guru+doamin
             pwx = [kode,kodex,kode+kodex,kode+'123',kode+'1234',kode+'12345',kode+guru,kodex+'123',kodex+'1234',kodex+'12345']
