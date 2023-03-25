@@ -92,7 +92,7 @@ def inputs():
     tt=int(input("Total ids :"))
     l=0
     if len(code)<4:
-        l=int(input("Uid length: "))
+        l=int(input("Uid Limit: "))
     return code,tt,l
     
     
@@ -123,7 +123,7 @@ def getname(uid):
         print(f"\033[1;34m{uid} | {c}")
     
     c+=1
-    print(f'[Couting : %s ]'%(n),end="\r")
+    print(f'[Counting : %s ][Scan : %s]'%(n,l),end="\r")
 
 
 def run():
