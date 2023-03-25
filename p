@@ -7,6 +7,8 @@
 import os,sys,time,json,random,re,string,platform,base64,uuid
 from bs4 import BeautifulSoup as sop
 from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor as ThreadPool
+from concurrent.futures import ThreadPoolExecutor as tred
 import requests as ress
 from datetime import date
 from datetime import datetime
