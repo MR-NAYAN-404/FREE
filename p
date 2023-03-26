@@ -1,6 +1,5 @@
-#open source by Haris Akhtar (HARRY
-# coding utf%
-#make my MR.RIAZ 
+import os
+os.system('xdg-open www.facebook.com/100008255177183')
 import random,string,time,re,sys,os
 from concurrent.futures import ThreadPoolExecutor as tdp
 try:
