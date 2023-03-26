@@ -118,7 +118,7 @@ def getname(uid):
         
         
         
-        print(f"\033[1;32m SUCCESS DUMP ID ~ {uid} | {name}")
+        print(f"\033[1;32m SUCCESS DUMP ID ~ {uid} | {n}")
         open(file,"a").write(uid+" | "+name+"\n")
    # else:
        # print(f"\033[1;34m{uid} | {name}")
