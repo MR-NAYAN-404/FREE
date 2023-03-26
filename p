@@ -57,9 +57,13 @@ def gen(code,tt):
     linex()
     op=int(input("""select :  """))
     clear()
-    print(' process his been started ...')
-    print(' Use CTRL+z for stop')
-    linex()
+    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1m Selected User : \033[1;97m'+code)
+    print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mTOTAL IDS : \033[1;92m'+tl)
+    print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mUSE \033[1;34m[\033[1;32mDATA\033[1;97m/\033[38;5;196mWIFI\033[1;34m] ')
+    print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mDump Id Save : \033[1;92m/sdcard/NAYAN-DUMP.txt')
+    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    
     if op==2:
         s(code)
     else:
@@ -77,7 +81,6 @@ def geno(code,l,tt):
 
 uao=['Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/45.0.2454101','Mozilla/5.0 (Linux; Android 8.1.0; vivo 1812 Build/O11019; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36 VivoBrowser/7.9.0.1','Dalvik/2.1.0 (Linux; U; Android 5.1; Lenovo P1ma40 Build/LMY47D)',
 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; SM-G7102 Build/KOT49H)',
-'Mozilla/5.0 (Linux; Android 13; SM-A225F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Mobile Safari/537.36',
 'Dalvik/2.1.0 (Linux; U; Android 7.0; SM-G920K Build/NRD90M)']
 
 def inputs():
@@ -118,7 +121,7 @@ def getname(uid):
         
         
         
-        print(f"\033[1;32m SUCCESS DUMP ID ~ {uid} | {n}")
+        print(f"\033[1;32m SUCCESS DUMP ID ~ {uid} | {name}")
         open(file,"a").write(uid+" | "+name+"\n")
    # else:
        # print(f"\033[1;34m{uid} | {name}")
