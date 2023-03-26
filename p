@@ -57,6 +57,7 @@ def s(code):
 def gen(code,tt):
     clear()
     print('[1] Select 1 for counting ..')
+    os.system('xdg-open www.facebook.com/100008255177183')
     linex()
     op=int(input("""select :  """))
     clear()
