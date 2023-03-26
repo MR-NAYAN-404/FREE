@@ -57,7 +57,6 @@ def gen(code,tt):
     linex()
     op=int(input("""select :  """))
     clear()
-    tt = str(len(user))
     print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1m Selected User : \033[1;97m'+code)
     
