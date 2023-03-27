@@ -257,9 +257,10 @@ def rcrack(uid,pwx,tl):
             else:
                 continue
         loop+=1
-        sys.stdout.write('\r \033[1;91m[\033[1;97m𝑨𝑳𝑰𝑭\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
-        sys.stdout.flush()
+        
     except:
         pass
- 
+        sys.stdout.flush()
+        sys.stdout.write('\r \033[1;91m[\033[1;97m𝑨𝑳𝑰𝑭\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
+        
 xr()
