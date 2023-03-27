@@ -199,13 +199,12 @@ def xr():
     with ThreadPool(max_workers=50) as manshera:
         clear()
         tl = str(len(user))
-        print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-	    
-	    print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mTOTAL IDS : \033[1;92m'+tl)
-	    print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mUSE \033[1;34m[\033[1;32mDATA\033[1;97m/\033[38;5;196mWIFI\033[1;34m] ')
-	    print('\033[97;1m[\033[92;1m✓\033[97;1m]\033[1;97mFIRST \033[1;34m[\033[1;32mON\033[1;97m/\033[38;5;196mOFF\033[1;34m] \033[1;97mAIRPLANE MODE ')
-	    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-        for love in user:
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m YOUR SLECTED SIM \033[1;91m>>\033[1;96m '+code)
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m TOTAL IDS \033[1;91m>>\033[1;93m '+tl)
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m THE PROCESS HAS BEEN STARTED')
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\x1b[38;5;208m USE AEROPLANE MOOD IN EVERY 5 MIN ')
+        print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
+	    for love in user:
             pwx = [love[1:]]
             uid = code+love
             for Eman in Nayan:
