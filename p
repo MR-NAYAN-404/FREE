@@ -88,6 +88,11 @@ ta = current.year
 bu = current.month
 ha = current.day
 today = date.today()
+def jalan(z):
+    for e in z + '\n':
+        sys.stdout.write(e)
+        sys.stdout.flush()
+        time.sleep(0.001)
 logo ="""
 \033[0;92m╔══════════════════════════════════════════════╗
 \033[0;32m║ ███    ██  \033[0;31m█████  \033[0;93m██    ██  \033[0;32m█████  \033[0;31m███    ██\033[0;92m ║
