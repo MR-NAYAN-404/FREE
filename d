@@ -1,922 +1,138 @@
-# Source Generated with Decompyle++
-# File: out.pyc (Python 2.7)
-
-import os
-import sys
-import re
-import time
-import json
-import requests
-import random
-import datetime
-from concurrent.futures import ThreadPoolExecutor
-from requests.exceptions import ConnectionError
-from bs4 import BeautifulSoup as parser
+import requests, bs4, re, sys, os
+parser = bs4.BeautifulSoup
+try:
+    import requests
+    from concurrent.futures import ThreadPoolExecutor as ThreadPool
+    import mechanize
+    from requests.exceptions import ConnectionError
+except ModuleNotFoundError:
+    os.system('pip install mechanize requests futures==2 > /dev/null')
+    os.system('git pul')
+from bs4 import BeautifulSoup
+from datetime import date
+from datetime import datetime
 from time import sleep
-
-H = '\x1b[1;90m'
-M = '\x1b[1;91m'
-H = '\x1b[1;92m'
-K = '\x1b[1;93m'
-T = '\x1b[1;94m'
-U = '\x1b[1;95m'
-B = '\x1b[1;96m'
-P = '\x1b[1;97m'
-ua_nokia = 'Mozilla/5.0 (NokiaC5-00)UC AppleWebkit(like Gecko) Safari/530'
-ua_xiaomi = 'Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/83.0.4103.101 Mobile Safari/537.36'
-ua_samsung = 'Mozilla/5.0 (Linux; Android 9; SM-G960F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.11 Mobile Safari/537.36'
-ua_macos = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_0_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15'
-ua_vivo = 'Mozilla/5.0 (Linux; U; Android 6.0; en-US; vivo 1713 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 UCBrowser/11.5.0.1015 Mobile Safari/537.36'
-ua_oppo = 'Mozilla/5.0 (Linux; Android 5.1.1; A37fw Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
-ua_huawei = 'Mozilla/5.0 (Linux; Android 8.0.0; HUAWEI Y7 PRO) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Mobile Safari/537.36'
-ua_redmi4a = 'Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.74 Mobile Safari/537.36'
-ua_vivoy12 = 'Mozilla/5.0 (Linux; Android 9; vivo 1904) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.99 Mobile Safari/537.36'
-ua_nokiax = 'NokiaX2-01/5.0 (07.10) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+'
-ua_asus = 'Mozilla/5.0 (Linux; Android 5.0; ASUS ZenFone 2 Build/LRX22C) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36'
-ua_galaxys10 = 'Mozilla/5.0 (Linux; Android 9; SM-G977N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.105 Mobile Safari/537.36'
-ua_lenovo = 'Mozilla/5.0 (Linux; Android 9; Lenovo TB-8705F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36'
-ua = random.choice([
-    ua_nokia,
-    ua_xiaomi,
-    ua_samsung,
-    ua_macos,
-    ua_vivo,
-    ua_oppo,
-    ua_huawei,
-    ua_redmi4a,
-    ua_vivoy12,
-    ua_nokiax,
-    ua_asus,
-    ua_galaxys10,
-    ua_lenovo])
-
-def jalan(z):
-    for e in z + '\n':
-        sys.stdout.write(e)
-        sys.stdout.flush()
-        time.sleep(0.01)
-        os.system('clear')
-    
-
-logo = ('\x1b[1;93m        _   _______  _____   \n\x1b[1;92m       | | / / __ \\ / ____|  \n\x1b[1;93m       | |/ | |__) | (___   \n\x1b[1;92m       |  < |  _  / \\___ \\   \n\x1b[1;93m       | |\\ | | \\ \\ ____) |  \n\x1b[1;92m       |_|\\_\\_|  \\_\\_____/   \n\n=======================================\n    \x1b[1;92m[\x1b[1;91m!\x1b[1;92m] \x1b[1;92mAUTHOR   \x1b[1;95m= \x1b[1;93mKRS\n    \x1b[1;92m[\x1b[1;91m!\x1b[1;92m] GITHUB   \x1b[1;95m= \x1b[1;93mTECH-KRS\n    \x1b[1;92m[\x1b[1;91m!\x1b[1;92m] \x1b[1;92mYOUTUBE  \x1b[1;95m= \x1b[1;93mTips And Tricks \n    \x1b[1;92m[\x1b[1;91m!\x1b[1;92m] WHATSAPP \x1b[1;95m= \x1b[1;93m0333**1118**          \n\x1b[1;92m======================================= \n  ')
-
-def Kashif():
-    os.system('clear')
-    print (logo)
-    time.sleep(0.2)
-    print ('\x1b[1;91m[\x1b[1;97m1\x1b[1;91m]\x1b[1;91m SUBSCRIBE MY CHANNAL')
-    time.sleep(0.2)
-    print ('\x1b[1;91m[\x1b[1;97m2\x1b[1;91m]\x1b[1;97m EXIT')
-    time.sleep(0.2)
-    print ('')
-    R = input('\x1b[1;91m[\x1b[1;97m?\x1b[1;91m]\x1b[1;97m SELECT: \x1b[1;92m')
-    if R == '':
-        jalan('\x1b[1;91m[\x1b[1;97m!\x1b[1;91m] \x1b[1;91mWRONG INPUT')
-        Kashif()
-    elif R == '1':
-        os.system('xdg-open  https://youtube.com/channel/UC31GN-yIBSwgBR1uqD_Ry3w')
-        KRS()
-    elif R == '2':
-        print ('\x1b[1;93m       SEE YOU AGAIN :)')
-        sys.exit()
-
-
-def KRS():
-    os.system('clear')
-    print (logo)
-    print ('\x1b[1;91m[\x1b[1;97m1\x1b[1;91m]\x1b[1;92m CREATE FILE')
-    time.sleep(0.2)
-    print ('\x1b[1;91m[\x1b[1;97m2\x1b[1;91m]\x1b[1;92m HOW TO CREATE FILE')
-    time.sleep(0.2)
-    print ('\x1b[1;91m[\x1b[1;97m3\x1b[1;91m]\x1b[1;97m EXIT')
-    time.sleep(0.2)
-    print ('')
-    time.sleep(0.2)
-    ok = input('\x1b[1;91m[\x1b[1;97m?\x1b[1;91m]\x1b[1;97m SELECT: \x1b[1;92m')
-    if ok == '':
-        print ('\x1b[1;91m[\x1b[1;97m!\x1b[1;91m] \x1b[1;91mWRONG INPUT')
-        KRS()
-    elif ok == '1':
-        menu()
-    elif ok == '2':
-        os.system('xdg-open  https://youtu.be/MAPctLNFy10')
-        KRS()
-    elif ok == '3':
-        print ('\x1b[1;93m       SEE YOU AGAIN :)')
-        sys.exit()
-
-
-
-    
-    
-def menu():
-    os.system('clear')
-    
-    
-        
-
-    print (logo)
-    print ('\x1b[1;92m=======================================')
-    print ('\x1b[1;93mPASTE PUBLIC UID HERE')
-    print ('\x1b[1;93mYOUR FILE MAKE AUTOMATIC')
-    print ('\x1b[1;93mFILE PATH e.g /sdcard/krs.txt')
-    print ('\x1b[1;92m=======================================')
-    print ('')
-    file = input('\x1b[1;93mENTER YOUR FILE PATH :- ')
-    id1 = input('\x1b[1;92mENTER ID 1: ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id1, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print ('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print (('\x1b[1;91mNot Public'))
-
-    id2 = raw_input('\x1b[1;92mENTER ID 2 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id2, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print ('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print (('\x1b[1;91mNot Public'))
-
-    id3 = raw_input('\x1b[1;92mENTER ID 3 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id3, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print (('\x1b[1;91mNot Public'))
-
-    id4 = raw_input('\x1b[1;92mENTER ID 4 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id4, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print ('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id5 = raw_input('\x1b[1;92mENTER ID 5 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id5, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id6 = raw_input('\x1b[1;92mENTER ID 6 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id6, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id7 = raw_input('\x1b[1;92mENTER ID 7 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id7, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id8 = raw_input('\x1b[1;92mENTER ID 8 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id8, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id9 = raw_input('\x1b[1;92mENTER ID 9 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id9, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id10 = raw_input('\x1b[1;92mENTER ID 10 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id10, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id11 = raw_input('\x1b[1;92mENTER ID 11 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id11, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id12 = raw_input('\x1b[1;92mENTER ID 12 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id12, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id13 = raw_input('\x1b[1;92mENTER ID 13 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id13, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id14 = raw_input('\x1b[1;92mENTER ID 14 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id14, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id15 = raw_input('\x1b[1;92mENTER ID 15 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id15, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id16 = raw_input('\x1b[1;92mENTER ID 16 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id16, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id17 = raw_input('\x1b[1;92mENTER ID 17 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id17, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id18 = raw_input('\x1b[1;92mENTER ID 18 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id18, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id19 = raw_input('\x1b[1;92mENTER ID 19  : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id19, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id20 = raw_input('\x1b[1;92mENTER ID 20 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id20, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id21 = raw_input('\x1b[1;92mENTER ID 21 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id21, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id22 = raw_input('\x1b[1;92mENTER ID 22 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id22, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id23 = raw_input('\x1b[1;92mENTER ID 23 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id23, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id24 = raw_input('\x1b[1;92mENTER ID 24 : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id24, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id25 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id25, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id26 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id26, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id27 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id27, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id28 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id28, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id29 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id29, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id30 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id30, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id31 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id31, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id32 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id32, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id33 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id33, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id34 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id34, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id35 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id35, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id36 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id36, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id37 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id37, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id38 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id38, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id39 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id39, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id40 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id40, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id41 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id41, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id42 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id42, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id43 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id43, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id44 = raw_input('\x1b[1;92miENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id44, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id45 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id45, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id46 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id46, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id47 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id47, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id48 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id48, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id49 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id49, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id50 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id50, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id51 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id51, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id52 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id52, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id53 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id53, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id54 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id54, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id55 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id55, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id56 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id56, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id57 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id57, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id58 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id58, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id59 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id59, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id60 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id60, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id61 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id61, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id62 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id62, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id63 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id63, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id64 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id64, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id65 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id65, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id66 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id66, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id67 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id67, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id68 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id68, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id69 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id69, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id70 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id70, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id71 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id71, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    id72 = raw_input('\x1b[1;92mENTER ID : ')
-    
-    try:
-        rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id72, ___token___)).json()
-        file1 = open(file, 'a')
-        for a in rex['friends']['data']:
-            file1.write(a['id'] + ' | ' + a['name'] + '\n')
-            print('\x1b[1;92mDUMP SUCCESSFUL')
-    except KeyError:
-        print ('\x1b[1;91mNot Public')
-
-    print ('\x1b[1;96m DUMP COMPLETED')
-    time.sleep(5)
-    menu()
-
-Kashif()
+from time import sleep as waktu
+logo =                                          ("""   
+\033[0;92m╔══════════════════════════════════════════════╗
+\033[0;32m║ ███    ██  \033[0;31m█████  \033[0;93m██    ██  \033[0;32m█████  \033[0;31m███    ██\033[0;92m ║
+\033[0;32m║ ████   ██ \033[0;31m██   ██  \033[0;93m██  ██  \033[0;32m██   ██ \033[0;31m████   ██\033[0;92m ║
+\033[0;32m║ ██ ██  ██ \033[0;31m███████   \033[0;93m████   \033[0;32m███████ \033[0;31m██ ██  ██\033[0;92m ║
+\033[0;32m║ ██  ██ ██ \033[0;31m██   ██    \033[0;93m██    \033[0;32m██   \033[0;32m██ \033[0;31m██  ██ ██\033[0;92m ║
+\033[0;92m║ ██   ████ \033[0;31m██   ██    \033[0;93m██    \033[0;32m██   \033[0;32m██ \033[0;31m██   ████\033[0;92m ║
+\033[0;92m╚══════════════════════════════════════════════╝
+\033[0;92m╔═══════════════════════════════════════════╗\033[0;92m╔═══╗
+\033[0;92m║➣\033[0;31m DEVOLPER   :   \033[0;34m       MR. NAYAN          ║\033[0;32m║\033[1;31m N \033[1;32m║
+\033[0;92m║➣\033[0;33m FACEBOOK   :    \033[0;35m      Mohammad Nayan     ║\033[0;32m║\033[1;312m A\033[0;92m ║
+\033[0;92m║═══════════════════════════════════════════║\033[0;32m║\033[1;34m Y\033[0;92m ║
+\033[0;92m║➣\033[0;91m WHATSAPP   :    \033[0;92m      01615298449        ║\033[0;32m║\033[1;93m A\033[0;92m ║
+\033[0;92m║➣\033[0;93m GITHUB     :     \033[0;94m     MR-NAYAN-404       ║\033[0;92m║\033[1;92m N\033[0;92m ║
+\033[0;92m║➣\033[0;94m TOOLS      :      \033[0;93m    DUMP-FILE          ║\033[0;92m║ 😘║
+\033[0;92m╚═══════════════════════════════════════════╝\033[0;92m╚═══╝               
+""")
+class Dump_regex:
+	def __init__(self):
+		self.ses = requests.Session()
+		self.os = os.system
+	
+	def login(self):
+		self.os("clear")
+		print(logo)
+		self.coki = input("[?] \033[1mEnter Fresh Cookie\033[1;33m : ")
+		try:
+			self.nama = re.search('name="primary_first_name" value="(.*?)"',str(self.ses.get("https://m.facebook.com/settings/account/?name&refresh_on_back=1&refid=70",cookies={"cookie": self.coki}).text)).group(1)
+			print("[!] Results In %s "%(self.nama))
+			open(".cookie.txt","w").write(self.coki)
+		except: exit("[!] invalid")
+		self.menu()
+	def menu(self):
+		self.os("clear")
+		print(logo)
+		try:
+			self.cok = {"cookie": open(".cookie.txt","r").read()}
+			self.nama = re.search('name="primary_first_name" value="(.*?)"',str(self.ses.get("https://m.facebook.com/settings/account/?name&refresh_on_back=1&refid=70",cookies=self.cok).text)).group(1)
+		except: self.login()
+		apa = input(f"[1] Dump Public\n[2] Dump masal\n[3]\033[1;32m Contact Owner\n[4] Exit Programme\n➥➥➣\033[94mChoosee : ")
+		print("-"*30)
+		if apa in ["1","01"]:
+			self.os("clear")
+			self.os("xdg-open https://www.facebook.com/profile.php?id=100008255177183")
+			print(logo)
+			akun = input("[?] ENTER PUBLIC UID  :  ")
+			self.file = input("[!] Enter Your Filename\n[!]\033[1;33m Example : Nayan\n[?]\033[1m Name : ")
+			self.os("xdg-open https://github.com/MR-NAYAN-404")
+			if "https" in str(akun): self.user = akun.split("/")[3]
+			else: self.user = akun
+			self.cek_target()
+			self.info_file()
+			self.dump_publik(f"https://mbasic.facebook.com/{self.user}/friends")	
+		elif apa in ["3","03"]:
+			self.os("xdg-open https://www.facebook.com/profile.php?id=100008255177183")
+			self.menu()
+		elif apa in ["2","02"]:
+			self.os("xdg-open https://www.facebook.com/profile.php?id=100008255177183")
+			self.os("clear")
+			print(logo)
+			xx = int(input("➥➥➣ENTER LIMIT Uid? : "))
+			self.file = input("[!] Enter Your Filename\n[!]\033[1;33m Example : Nayan\n[?]\033[1m Name : ")
+			self.os("xdg-open https://github.com/MR-NAYAN-404")
+			self.info_file()
+			for x in range(xx):
+				akun = input("➥➥➣\033[0;92m ENTER UID  : ")
+				if "https" in str(akun): self.user = akun.split("/")[3]
+				else: self.user = akun
+				self.cek_target()
+				self.dump_publik(f"https://mbasic.facebook.com/{self.user}/friends")
+		elif apa in ["4","04"]: self.os("rm -rf .cookie.txt"); exit()
+		else: exit()
+		
+	def info_file(self):
+		print(f"[!] Save File : /sdcard/{self.file}.txt")
+		
+	def cek_target(self):
+		try:
+			link = self.ses.get(f"https://mbasic.facebook.com/{self.user}/friends", cookies=self.cok).text
+			if "Tidak Ada Teman Untuk Ditampilkan" in link:
+				exit("[!] Friend List Not Published")
+			elif "The page you requested was not found.." in link:
+				exit(f"[!] User With Id {self.user} Not Found")
+			elif "You Cannot Use This Feature Now" in link:
+				exit("[!] Facebook Limits Every Activity, Limit Bro, Please Switch Accounts")
+			elif "Content Not Found" in link:
+				exit(f"[!] User With Id {self.user} Not Found")
+			else: pass
+		except(requests.exceptions.ConnectionError,requests.exceptions.ChunkedEncodingError,requests.exceptions.ReadTimeout):
+			exit("[!] Connection Error")
+	
+	def dump_publik(self, url):	
+		try:
+			link = self.ses.get(url, headers={"Host": "mbasic.facebook.com", "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", "accept-encoding": "gzip, deflate", "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7", "cache-control": "max-age=0", "sec-ch-ua": '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="106"', "sec-ch-ua-mobile": "?0", "sec-ch-ua-model": "", "ch-ua-platform": '"Android"', "sec-fetch-dest": "document", "sec-fetch-mode": "navigate", "sec-fetch-site": "none", "sec-fetch-user": "?1", "upgrade-insecure-requests": "1", "user-agent": "Mozilla/5.0 (Linux; Android 11; Redmi Note 9 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.126 Mobile Safari/537.36 OPR/72.4.3767.69265", "cookie": self.cok["cookie"]}).text
+			data = re.findall('middle\"\>\<a\ class\=\"..\"\ href\=\"(.*?)\"\>(.*?)\<\/a\>',link)
+			for user in data:
+				if "profile.php?" in user[0]:
+					mentah = re.findall("id\=(.*?)\&",user[0])[0]+"|"+user[1]
+					open(f"/sdcard/{self.file}.txt","a").write(str(mentah)+" \n")
+					xxx = open(f"/sdcard/{self.file}.txt","r").read().splitlines()
+					print(f'\r[!]\033[1m {len(xxx)} - %s       '%(user[1]),end=" \n")
+				else:
+					mentah = re.findall("\/(.*?)\?eav",user[0])[0]+"|"+user[1]
+					open(f"/sdcard/{self.file}.txt","a").write(str(mentah)+"\n")
+					xxx = open(f"/sdcard/{self.file}.txt","r").read().splitlines()
+					print(f'\r[!]\033[1m {len(xxx)} - %s         '%(user[1]),end=" \n")
+				sys.stdout.flush()
+			if "See More Friends" in link:
+				self.dump_publik("https://mbasic.facebook.com"+parser(link, "html.parser").find("a", string="See More Friends").get("href"))
+		except Exception as e: print(e)
+		print("")
+		print("")
+		print('\033[1m➥➥➣Continue Cracking Back ( Y/n ) ? ')
+		woi = input('➥➥➣\033[94mChoosee : ')
+		if woi in ['y','Y']:
+			os.system('clear')
+			self.menu()
+		else:
+			print(f'\t➥➥➣Good Bye Dadahh🥵🥵 ')
+			self.os("clear")
+			self.menu()
+		
+Dump_regex().menu()	
