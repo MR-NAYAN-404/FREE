@@ -97,7 +97,7 @@ def KRS():
         print ('\x1b[1;91m[\x1b[1;97m!\x1b[1;91m] \x1b[1;91mWRONG INPUT')
         KRS()
     elif ok == '1':
-        login()
+        menu()
     elif ok == '2':
         os.system('xdg-open  https://youtu.be/MAPctLNFy10')
         KRS()
