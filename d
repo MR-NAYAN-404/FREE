@@ -122,8 +122,8 @@ def menu():
     print ('\x1b[1;93mFILE PATH e.g /sdcard/krs.txt')
     print ('\x1b[1;92m=======================================')
     print ('')
-    file = raw_input('\x1b[1;93mENTER YOUR FILE PATH :- ')
-    id1 = raw_input('\x1b[1;92mENTER ID 1: ')
+    file = input('\x1b[1;93mENTER YOUR FILE PATH :- ')
+    id1 = input('\x1b[1;92mENTER ID 1: ')
     
     try:
         rex = requests.get('https://graph.facebook.com/%s?fields=friends.limit(50000)&access_token=%s' % (id1, ___token___)).json()
